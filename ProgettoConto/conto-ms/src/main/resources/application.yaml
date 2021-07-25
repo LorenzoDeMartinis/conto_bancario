@@ -1,0 +1,17 @@
+#### feign client ###
+fabrick:
+  client:
+    name:
+      contobancario: ContoBancario
+    baseurl: https://sandbox.platfr.io
+    letturasaldo: /api/gbs/banking/v4.0/accounts/{accountId}/balance
+    creazionebonifico: /api/gbs/banking/v4.0/accounts/{accountId}/payments/money-transfers
+    letturatransazioni: /api/gbs/banking/v4.0/accounts/{accountId}/transactions
+    apikey: FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP
+    authschema: S2S
+    
+accountId: 14537780
+server:
+    port: 8080
+    servlet:
+        context-path: /conto-ms
