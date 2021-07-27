@@ -21,7 +21,6 @@ import it.esercizio.conto.dto.CreazioneBonificoOutputDTO;
 import it.esercizio.conto.dto.LetturaSaldoDTO;
 import it.esercizio.conto.dto.LetturaTransazioniOutputDTO;
 import it.esercizio.conto.entities.DLetturaTransazioni;
-import it.esercizio.conto.entities.DLetturaTransazioniPk;
 import it.esercizio.conto.feign.client.ContoBancarioFacade;
 import it.esercizio.conto.repository.LetturaTransazioniRepository;
 import it.esercizio.conto.service.ContoBancarioService;
@@ -67,33 +66,24 @@ public class ContoBancarioServiceImpl implements ContoBancarioService {
 	public ContentWrapperListDTO<LetturaTransazioniOutputDTO> letturaTransazioni(LocalDate fromAccountingDate,LocalDate toAccountingDate) {
 		ContentWrapperListDTO<LetturaTransazioniOutputDTO> outputList = 
 				this.contoBancarioFacade.letturaTransazioni(accountId, fromAccountingDate,toAccountingDate, apikey, authSchema);
+		//metodo per salvataggio transazioni sul db	
+		salvataggioSuDb(outputList);
+		return outputList;
 		
-		this.storicizza(outputList.getPayload().getList().stream().map(output ->{
+	}
+
+
+	private void salvataggioSuDb(ContentWrapperListDTO<LetturaTransazioniOutputDTO> outputList) {
+		for(LetturaTransazioniOutputDTO output : outputList.getPayload().getList()) {
 			DLetturaTransazioni transazione = new DLetturaTransazioni();
 			transazione.setCurrency(output.getCurrency());
 			transazione.setAccountingDate(output.getAccountingDate());
 			transazione.setDescription(output.getDescription());
 			transazione.setOperationId(output.getOperationId());
 			transazione.setTransactionId(output.getTransactionId());
-			transazione.setType(null);
 			transazione.setValueDate(output.getValueDate());
-			return transazione;
-		}).collect(Collectors.toList()));
-		
-		return outputList;
-		
-	}
-
-	public Boolean storicizza(List<DLetturaTransazioni> transazioni) {
-		
-		for(DLetturaTransazioni transazione : transazioni) {
-			DLetturaTransazioniPk pk = new DLetturaTransazioniPk();
-			pk.setUtenteUltimaModifica(UTENTE_ADMIN);
-			pk.setDataUltimaModifica(new Date());
-			transazione.setDLetturaTransazioniPk(pk);
 			this.letturaTransazioniRepository.save(transazione);
 		}
-		
-		return null;
 	}
+
 }

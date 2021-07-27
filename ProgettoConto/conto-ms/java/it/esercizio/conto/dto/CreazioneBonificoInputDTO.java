@@ -26,7 +26,7 @@ public class CreazioneBonificoInputDTO {
 	
 	private String amount;
 	
-	@DateTimeFormat(pattern = "YYYY-MM-DD")
+	@DateTimeFormat(pattern = "PATTERN")
 	private String executionDate;
 	
 }

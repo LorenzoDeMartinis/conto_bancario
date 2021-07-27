@@ -20,6 +20,7 @@ public class Costanti {
 	public static final String ERRORE_LIMITAZIONE_CONTO_PROVA
 	= "Errore tecnico  La condizione BP049 non e' prevista per il conto id 14537780"; // descrizione errore
 	public static final String CODICE_ERRORE = "API000";
+	public static final String PATTERN = "PATTERN";
 	
 	
 }

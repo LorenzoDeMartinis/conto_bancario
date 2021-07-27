@@ -15,9 +15,7 @@ public class BonificoClientDTO implements Serializable{
 	 */
 	private static final long serialVersionUID = 7772570639433177707L;
 	
-	private CreditorClientDTO creditor;
-	
-	@DateTimeFormat(pattern = "YYYY-MM-DD")
+	@DateTimeFormat(pattern = "PATTERN")
 	Date executionDate;
 	
 	private String description;

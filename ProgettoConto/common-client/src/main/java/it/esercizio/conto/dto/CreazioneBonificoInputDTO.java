@@ -26,7 +26,7 @@ public class CreazioneBonificoInputDTO implements Serializable{
 
 	private CreditorDTO creditor;
 	
-	@DateTimeFormat(pattern = "YYYY-MM-DD")
+	@DateTimeFormat(pattern = "PATTERN")
 	Date executionDate;
 	
 	private String description;

@@ -131,7 +131,7 @@ public class ContoBancarioAssembler {
 			letturaTransazioniDomain.setDescription(dto.getDescription());
 			letturaTransazioniDomain.setOperationId(dto.getOperationId());
 			letturaTransazioniDomain.setTransactionId(dto.getTransactionId());
-//			letturaTransazioniDomain.setType(assembleTransactionType(dto.getType()));
+			letturaTransazioniDomain.setType(assembleTransactionType(dto.getType()));
 			letturaTransazioniDomain.setValueDate(dto.getValueDate());
 			domainList.add(letturaTransazioniDomain);
 		}
@@ -175,7 +175,7 @@ public class ContoBancarioAssembler {
 			dto.setDescription(dominio.getDescription());
 			dto.setOperationId(dominio.getOperationId());
 			dto.setTransactionId(dominio.getTransactionId());
-//			dto.setType(assembleTransactionTypeDTO(dominio.getType()));
+			dto.setType(assembleTransactionTypeDTO(dominio.getType()));
 			dto.setValueDate(dominio.getValueDate());
 			listDto.add(dto);
 			

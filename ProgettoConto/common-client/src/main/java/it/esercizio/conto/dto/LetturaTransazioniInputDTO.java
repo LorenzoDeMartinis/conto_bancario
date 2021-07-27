@@ -18,10 +18,10 @@ import lombok.Data;
 @Data
 public class LetturaTransazioniInputDTO {
 
-	@DateTimeFormat(pattern = "YYYY-MM-DD")
+	@DateTimeFormat(pattern = "PATTERN")
 	Date fromAccountingDate;
 	
-	@DateTimeFormat(pattern = "YYYY-MM-DD")
+	@DateTimeFormat(pattern = "PATTERN")
 	Date toAccountingDate;
 	
 }
