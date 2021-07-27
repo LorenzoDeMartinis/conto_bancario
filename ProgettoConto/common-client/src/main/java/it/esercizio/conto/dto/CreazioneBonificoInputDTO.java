@@ -1,5 +1,8 @@
 package it.esercizio.conto.dto;
 
+import java.io.Serializable;
+import java.util.Date;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
@@ -14,19 +17,24 @@ import lombok.Data;
  * @description prima versione 
  */
 @Data
-public class CreazioneBonificoInputDTO {
+public class CreazioneBonificoInputDTO implements Serializable{
 
-	private Long accountId;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3376190433395923598L;
+
+	private CreditorDTO creditor;
 	
-	private String receiverName;
+	@DateTimeFormat(pattern = "YYYY-MM-DD")
+	Date executionDate;
 	
 	private String description;
 	
+	private Long amount;
+	
 	private String currency;
 	
-	private String amount;
-	
-	@DateTimeFormat(pattern = "YYYY-MM-DD")
-	private String executionDate;
+	private String reciverName;
 	
 }

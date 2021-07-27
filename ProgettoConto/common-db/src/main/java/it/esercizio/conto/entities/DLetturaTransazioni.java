@@ -4,37 +4,50 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import lombok.Data;
 
 @Entity
 @Data
+@Table(name="d_lettura_transazioni_h")
 public class DLetturaTransazioni {
 
 	 @Id
-	 @Column(name="SEQU_ID_LETTURA_TRANS")
+	 @GeneratedValue(strategy=GenerationType.IDENTITY)
+	 @Column(name="idLetturaTransazione")
 	 private Long idLetturaTransazione;
 	
-	 @Column(name="TRANSACTION_ID")
+	 //bi-directional many-to-one association to DLetturaTransazioniPk
+	 @ManyToOne
+	 @JoinColumn(name="FK_CONFIGURAZIONE_FUA_PK")
+	 public DLetturaTransazioniPk dLetturaTransazioniPk;
+	 
+	 @Column(name="transaction_id")
 	 private String transactionId;
 	
-	 @Column(name="OPERATION_ID")
+	 @Column(name="operation_id")
 	 private String operationId;
 	
-	 @Column(name="ACCOUNTING_DATE")
+	 @Column(name="accounting_date")
 	 private Date accountingDate;
 	
-	 @Column(name="VALUE_DATE")
+	 @Column(name="value_date")
 	 private Date valueDate;
 	
-	 @Column(name="TRANSACTION_TYPE")
-	 private DTransactionType type;
+	 @Column(name="type")
+	 private Long type;
 	
-	 @Column(name="CURRENCY")
+	 @Column(name="currency")
 	 private String currency;
 	
-	 @Column(name="DESCRIPTION")
+	 @Column(name="description")
 	 private String description;
+	 
 	
 }

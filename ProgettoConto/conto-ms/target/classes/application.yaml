@@ -9,9 +9,18 @@ fabrick:
     letturatransazioni: /api/gbs/banking/v4.0/accounts/{accountId}/transactions
     apikey: FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP
     authschema: S2S
-    
+    xtimezone: Europe/Rome
 accountId: 14537780
 server:
     port: 8080
     servlet:
         context-path: /conto-ms
+spring:
+  cache:
+    type: NONE
+  datasource:
+    continue-on-error: true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: root
+    url: jdbc:mysql://localhost:3306/sys
+    username: root

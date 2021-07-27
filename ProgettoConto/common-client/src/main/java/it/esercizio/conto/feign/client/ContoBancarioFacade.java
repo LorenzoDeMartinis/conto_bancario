@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import feign.FeignException;
 import it.esercizio.conto.dto.ContentWrapperDTO;
 import it.esercizio.conto.dto.ContentWrapperListDTO;
 import it.esercizio.conto.dto.CreazioneBonificoInputDTO;
@@ -35,10 +36,14 @@ public interface ContoBancarioFacade {
 	
 	
 	@GetMapping(value = "${fabrick.client.letturasaldo}", consumes = "application/json")
-	ContentWrapperDTO<LetturaSaldoDTO> letturaSaldo(@RequestParam("accountId") Long accountId,@RequestHeader("Api-Key") String userKey,@RequestHeader("Auth-Schema") String authschema);
+	ContentWrapperDTO<LetturaSaldoDTO> letturaSaldo(@RequestParam("accountId") Long accountId,
+			@RequestHeader("Api-Key") String userKey,@RequestHeader("Auth-Schema") String authschema);
 
 	@PostMapping(value = "${fabrick.client.creazionebonifico}", consumes = "application/json")
-	ContentWrapperDTO<CreazioneBonificoOutputDTO> creazioneBonifico(@RequestBody  CreazioneBonificoInputDTO input,  @RequestParam("accountId") Long accountId,@RequestHeader("Api-Key") String userKey,@RequestHeader("Auth-Schema") String authschema);
+	ContentWrapperDTO<CreazioneBonificoOutputDTO> creazioneBonifico(@RequestBody  CreazioneBonificoInputDTO input,
+			@RequestParam("accountId") Long accountId,@RequestHeader("Api-Key") String userKey,
+			@RequestHeader("Auth-Schema") String authschema,
+			@RequestHeader("X-Time-Zone")String xTimeZone) throws FeignException;
 
 
 	@GetMapping(value = "${fabrick.client.letturatransazioni}", consumes = "application/json")

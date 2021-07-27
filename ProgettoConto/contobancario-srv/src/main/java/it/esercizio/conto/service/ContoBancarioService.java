@@ -1,15 +1,14 @@
 package it.esercizio.conto.service;
 
 import java.time.LocalDate;
-import java.util.List;
 
+import feign.FeignException;
 import it.esercizio.conto.dto.ContentWrapperDTO;
 import it.esercizio.conto.dto.ContentWrapperListDTO;
 import it.esercizio.conto.dto.CreazioneBonificoInputDTO;
 import it.esercizio.conto.dto.CreazioneBonificoOutputDTO;
 import it.esercizio.conto.dto.LetturaSaldoDTO;
 import it.esercizio.conto.dto.LetturaTransazioniOutputDTO;
-import it.eservizio.conto.domain.LetturaTransazioniDomain;
 
 /**
  * ContoBancarioService.java 
@@ -35,7 +34,7 @@ public interface ContoBancarioService {
 	 * @param input
 	 * @return
 	 */
-	public ContentWrapperDTO<CreazioneBonificoOutputDTO> creazioneBonifico(CreazioneBonificoInputDTO input);
+	public ContentWrapperDTO<CreazioneBonificoOutputDTO> creazioneBonifico(CreazioneBonificoInputDTO input) throws FeignException;
 	
 	/**metodo per lettura transazioni
 	 * 
