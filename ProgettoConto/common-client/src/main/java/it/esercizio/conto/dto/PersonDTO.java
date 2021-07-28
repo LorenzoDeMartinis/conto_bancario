@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 import lombok.Data;
 /**
- * AccountDTO.java 
- * classe dto per dati account
+ * CreditorDTO.java 
+ * classe dto per i dati del creditore
  * 
  * @Change @history
  * @author      Inmatica SpA - ldemartinis
@@ -14,14 +14,15 @@ import lombok.Data;
  * @Description prima versione
  */
 @Data
-public class AccountDTO implements Serializable{
+public class PersonDTO implements Serializable{
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1697287484189742986L;
+	private static final long serialVersionUID = -6611264813606594654L;
 
-	private String accountCode;
+
+	private String name;
 	
-	private String bicCode;
+	private AccountDTO account;
 }

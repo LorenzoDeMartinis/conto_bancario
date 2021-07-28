@@ -13,7 +13,7 @@ import it.esercizio.conto.dto.ContentWrapperDTO;
 import it.esercizio.conto.dto.ContentWrapperListDTO;
 import it.esercizio.conto.dto.CreazioneBonificoInputDTO;
 import it.esercizio.conto.dto.CreazioneBonificoOutputDTO;
-import it.esercizio.conto.dto.CreditorDTO;
+import it.esercizio.conto.dto.PersonDTO;
 import it.esercizio.conto.dto.LetturaSaldoDTO;
 import it.esercizio.conto.dto.LetturaTransazioniOutputDTO;
 import it.esercizio.conto.dto.PayLoadListDTO;
@@ -65,8 +65,8 @@ public class ContoBancarioAssembler {
 	 * @param input
 	 * @return
 	 */
-	public CreditorDTO assemblerCreditor() {
-		CreditorDTO creditor = new CreditorDTO();
+	public PersonDTO assemblerCreditor() {
+		PersonDTO creditor = new PersonDTO();
 		creditor.setAccount(assemblerAccount());
 		creditor.setName(CREDITOR_NAME);
 		return creditor;

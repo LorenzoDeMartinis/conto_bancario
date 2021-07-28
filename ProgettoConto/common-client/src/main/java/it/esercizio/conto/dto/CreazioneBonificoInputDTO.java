@@ -24,7 +24,7 @@ public class CreazioneBonificoInputDTO implements Serializable{
 	 */
 	private static final long serialVersionUID = -3376190433395923598L;
 
-	private CreditorDTO creditor;
+	private PersonDTO creditor;
 	
 	@DateTimeFormat(pattern = "PATTERN")
 	Date executionDate;

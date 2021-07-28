@@ -1,11 +1,6 @@
 package it.esercizio.conto.service.impl;
 
-import static it.esercizio.conto.common.Costanti.UTENTE_ADMIN;
-
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -52,8 +47,6 @@ public class ContoBancarioServiceImpl implements ContoBancarioService {
 		//istanzio l'entita di dominio e la assemblo con le informazioni in output del servizio
 		return 	this.contoBancarioFacade.letturaSaldo(accountId, apikey,authSchema);
 	}
-
-
 
 
 	@Override

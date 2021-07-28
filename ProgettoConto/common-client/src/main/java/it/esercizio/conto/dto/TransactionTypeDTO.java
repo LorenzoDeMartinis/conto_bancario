@@ -3,7 +3,16 @@ package it.esercizio.conto.dto;
 import java.io.Serializable;
 
 import lombok.Data;
-
+/**
+ * PayLoadListDTO.java 
+ * classe dto per il tipo di transazione
+ * 
+ * @Change @history
+ * @author      Inmatica SpA - ldemartinis
+ * @version     1.0
+ * @DateUpdate  28 lug 2021
+ * @Description prima versione
+ */
 @Data
 public class TransactionTypeDTO implements Serializable{
 
