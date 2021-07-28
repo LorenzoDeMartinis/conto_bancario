@@ -7,7 +7,7 @@ import lombok.Data;
 
 /**
  * AmountDTO.java
- * DTO wrapper amount
+ * DTO amount
  * @author ldemartinis
  *
  * @version 1.0
