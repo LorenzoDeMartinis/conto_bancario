@@ -19,8 +19,8 @@ public class Costanti {
 	public static final String UTENTE_ADMIN = "admin"; // utente amministratore
 	public static final String ERRORE_LIMITAZIONE_CONTO_PROVA
 	= "Errore tecnico  La condizione BP049 non e' prevista per il conto id 14537780"; // descrizione errore
-	public static final String CODICE_ERRORE = "API000";
-	public static final String PATTERN = "YYYY-MM-DD";
+	public static final String CODICE_ERRORE = "API000"; //codice errore
+	public static final String PATTERN = "YYYY-MM-DD"; //formato data
 	
 	
 }

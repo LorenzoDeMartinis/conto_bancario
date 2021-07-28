@@ -4,7 +4,16 @@ import java.io.Serializable;
 import java.util.Date;
 
 import lombok.Data;
-
+/**
+ * ErrorClientDTO.java
+ * classe per rappresentazioni informazioni per lettura saldo
+ * @Change @history
+ * @author ldemartinis
+ * @version     1.0
+ * @DateUpdate 28 lug 2021
+ * @Description prima versione
+ *
+ */
 @Data
 public class LetturaSaldoClientDTO implements Serializable{
 

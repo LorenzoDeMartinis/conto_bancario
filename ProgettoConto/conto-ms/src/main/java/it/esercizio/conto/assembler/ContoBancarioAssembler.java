@@ -1,27 +1,29 @@
 package it.esercizio.conto.assembler;
 
-import static it.esercizio.conto.common.Costanti.CODICE_ERRORE;
-import static it.esercizio.conto.common.Costanti.ERRORE_LIMITAZIONE_CONTO_PROVA;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
 import it.esercizio.conto.dto.AccountDTO;
+import it.esercizio.conto.dto.AmountDTO;
 import it.esercizio.conto.dto.ContentWrapperDTO;
 import it.esercizio.conto.dto.ContentWrapperListDTO;
 import it.esercizio.conto.dto.CreazioneBonificoInputDTO;
 import it.esercizio.conto.dto.CreazioneBonificoOutputDTO;
-import it.esercizio.conto.dto.PersonDTO;
+import it.esercizio.conto.dto.FeeDTO;
 import it.esercizio.conto.dto.LetturaSaldoDTO;
 import it.esercizio.conto.dto.LetturaTransazioniOutputDTO;
 import it.esercizio.conto.dto.PayLoadListDTO;
+import it.esercizio.conto.dto.PersonDTO;
 import it.esercizio.conto.dto.TransactionTypeDTO;
+import it.esercizio.conto.dto.client.AmountClientDTO;
 import it.esercizio.conto.dto.client.BonificoClientDTO;
+import it.esercizio.conto.dto.client.CreazioneBonificoClientDTO;
+import it.esercizio.conto.dto.client.FeeClientDTO;
 import it.esercizio.conto.dto.client.LetturaSaldoClientDTO;
 import it.esercizio.conto.dto.client.LetturaTransazioniClientDTO;
-import it.esercizio.conto.dto.client.OperationStateClientDTO;
+import it.esercizio.conto.dto.client.PersonClientDTO;
 import it.esercizio.conto.entities.DTransactionType;
 import it.eservizio.conto.domain.LetturaSaldoDomain;
 import it.eservizio.conto.domain.LetturaTransazioniDomain;
@@ -33,18 +35,77 @@ public class ContoBancarioAssembler {
 	private String ACCOUNT_CODE 	= 	"IT23A0336844430152923804660";
 	private String BIT_CODE			=	"SELBIT2BXXX";
 	
-	public OperationStateClientDTO assemblerOperationState(ContentWrapperDTO<CreazioneBonificoOutputDTO> input) {
-		OperationStateClientDTO opState = new OperationStateClientDTO();
+	public CreazioneBonificoClientDTO assemblerCreazioneBonificoClient(ContentWrapperDTO<CreazioneBonificoOutputDTO> input) {
+		CreazioneBonificoClientDTO creazioneBonificoOutput = new CreazioneBonificoClientDTO();
+		CreazioneBonificoOutputDTO inputDto = input.getPayload();
 		
-		if(input.getError() != null) {
-			opState.setOpState(false);
-			opState.setDescription(ERRORE_LIMITAZIONE_CONTO_PROVA);
-			opState.setCode(CODICE_ERRORE);
-		}
+		creazioneBonificoOutput.setAccountedDatetime(inputDto.getAccountedDatetime());
+		creazioneBonificoOutput.setAmount(assemblerAmountClient(inputDto.getAmount()));
+		creazioneBonificoOutput.setCreatedDatetime(inputDto.getCreatedDatetime());
+		creazioneBonificoOutput.setCreditor(assemblerPersonClient(inputDto.getCreditor()));
+		creazioneBonificoOutput.setCro(inputDto.getCro());
+		creazioneBonificoOutput.setDebtor(assemblerPersonClient(inputDto.getDebtor()));
+		creazioneBonificoOutput.setDebtorValueDate(inputDto.getDebtorValueDate());
+		creazioneBonificoOutput.setDescription(inputDto.getDescription());
+		creazioneBonificoOutput.setDirection(inputDto.getDirection());
+		creazioneBonificoOutput.setFeeAccountId(inputDto.getFeeAccountId());
+		creazioneBonificoOutput.setFees(assemblerFeesClient(inputDto.getFees()));
+		creazioneBonificoOutput.setFeeType(inputDto.getFeeType());
+		creazioneBonificoOutput.setHasTaxRelief(inputDto.getHasTaxRelief());
+		creazioneBonificoOutput.setIsInstant(inputDto.getIsInstant());
+		creazioneBonificoOutput.setIsUrgent(inputDto.getIsUrgent());
+		creazioneBonificoOutput.setMoneyTransferId(inputDto.getMoneyTransferId());
+		creazioneBonificoOutput.setStatus(inputDto.getStatus());
+		creazioneBonificoOutput.setTrn(inputDto.getTrn());
+		creazioneBonificoOutput.setUri(inputDto.getUri());
 		
-		return opState;
+		return creazioneBonificoOutput;
+	}
+	/**assembler amount
+	 * 
+	 * @param input
+	 * @return
+	 */
+	public AmountClientDTO assemblerAmountClient(AmountDTO input) {
+		AmountClientDTO clientDto = new AmountClientDTO();
+		clientDto.setCreditorAmount(input.getCreditorAmount());
+		clientDto.setCreditorCurrency(input.getCreditorCurrency());
+		clientDto.setCreditorCurrencyDate(input.getCreditorCurrencyDate());
+		clientDto.setDebtorAmount(input.getDebtorAmount());
+		clientDto.setDebtorCurrency(input.getDebtorCurrency());
+		clientDto.setExchangeRate(input.getExchangeRate());
+		return clientDto;
 	}
 	
+	/**Assembler Person
+	 * 
+	 * @param input
+	 * @return
+	 */
+	public PersonClientDTO assemblerPersonClient(PersonDTO input) {
+		PersonClientDTO personDto = new PersonClientDTO();
+		personDto.setAccount(input.getAccount());
+		personDto.setName(input.getName());
+		return personDto;
+		
+	}
+	/**assembler Fee
+	 * 
+	 * @param input
+	 * @return
+	 */
+	public List<FeeClientDTO> assemblerFeesClient(List<FeeDTO> input){
+		List<FeeClientDTO> listFee = new ArrayList<FeeClientDTO>();
+		input.forEach(fee->{
+			FeeClientDTO feeDto = new FeeClientDTO();
+			feeDto.setAmount(fee.getAmount());
+			feeDto.setCurrency(fee.getCurrency());
+			feeDto.setDescription(fee.getDescription());
+			feeDto.setFeeCode(fee.getFeeCode());
+		});
+		return listFee;
+		
+	}
 	/**assembler BonificoClientDTO to CreazioneBonificoInputDTO
 	 * 
 	 * @param input

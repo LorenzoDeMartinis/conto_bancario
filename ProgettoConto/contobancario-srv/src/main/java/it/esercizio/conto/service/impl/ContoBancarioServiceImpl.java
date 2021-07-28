@@ -44,7 +44,6 @@ public class ContoBancarioServiceImpl implements ContoBancarioService {
 	
 	@Override
 	public ContentWrapperDTO<LetturaSaldoDTO> letturaSaldo() {
-		//istanzio l'entita di dominio e la assemblo con le informazioni in output del servizio
 		return 	this.contoBancarioFacade.letturaSaldo(accountId, apikey,authSchema);
 	}
 

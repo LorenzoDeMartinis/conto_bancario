@@ -1,8 +1,10 @@
 package it.esercizio.conto.dto;
-
+import static it.esercizio.conto.common.Costanti.PATTERN;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
@@ -42,12 +44,16 @@ public class CreazioneBonificoOutputDTO implements Serializable{
 	
 	String description;
 	
+	@DateTimeFormat(pattern = PATTERN)
 	Date createdDatetime;
 	
+	@DateTimeFormat(pattern = PATTERN)
 	Date accountedDatetime;
 	
+	@DateTimeFormat(pattern = PATTERN)
 	Date creditorValueDate;
 	
+	@DateTimeFormat(pattern = PATTERN)
 	Date debtorValueDate;
 	
 	AmountDTO amount;

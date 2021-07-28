@@ -2,7 +2,7 @@ package it.esercizio.conto.dto;
 
 import java.io.Serializable;
 import java.util.Date;
-
+import static it.esercizio.conto.common.Costanti.PATTERN;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
@@ -26,7 +26,7 @@ public class CreazioneBonificoInputDTO implements Serializable{
 
 	private PersonDTO creditor;
 	
-	@DateTimeFormat(pattern = "PATTERN")
+	@DateTimeFormat(pattern = PATTERN)
 	Date executionDate;
 	
 	private String description;

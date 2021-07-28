@@ -31,7 +31,7 @@ import it.esercizio.conto.dto.client.BonificoClientDTO;
 import it.esercizio.conto.dto.client.FaultResponse;
 import it.esercizio.conto.dto.client.LetturaSaldoClientDTO;
 import it.esercizio.conto.dto.client.LetturaTransazioniClientDTO;
-import it.esercizio.conto.dto.client.OperationStateClientDTO;
+import it.esercizio.conto.dto.client.CreazioneBonificoClientDTO;
 import it.esercizio.conto.service.ContoBancarioService;
 
 /**
@@ -43,7 +43,6 @@ import it.esercizio.conto.service.ContoBancarioService;
  * @Description prima versione
  *
  */
-
 @RestController
 @RequestMapping(value = URL_BASE_CONTO)
 public class ContoController {
@@ -92,8 +91,8 @@ public class ContoController {
 	 */
 	@RequestMapping(value = BONIFICO, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody OperationStateClientDTO bonifico(@RequestBody BonificoClientDTO bonificoInput,HttpServletRequest request){
-		return this.contoBancarioAssembler.assemblerOperationState(
+	public @ResponseBody CreazioneBonificoClientDTO bonifico(@RequestBody BonificoClientDTO bonificoInput,HttpServletRequest request){
+		return this.contoBancarioAssembler.assemblerCreazioneBonificoClient(
 				this.contoBancarioService.creazioneBonifico(
 						this.contoBancarioAssembler.assemblerCreazioneBonifico(bonificoInput)));
 	}

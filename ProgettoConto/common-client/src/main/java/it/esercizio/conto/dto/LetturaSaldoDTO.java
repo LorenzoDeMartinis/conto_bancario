@@ -1,7 +1,11 @@
 package it.esercizio.conto.dto;
 
+import static it.esercizio.conto.common.Costanti.PATTERN;
+
 import java.io.Serializable;
 import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
@@ -23,6 +27,7 @@ public class LetturaSaldoDTO implements Serializable{
 	private static final long serialVersionUID = -2672967163601399356L;
 	
 	/*The reference date for the retrieved balance.*/
+	@DateTimeFormat(pattern = PATTERN)
 	private Date date;
 	/*Account balance: the reserved entries are not accounted.*/
 	private Float balance;
