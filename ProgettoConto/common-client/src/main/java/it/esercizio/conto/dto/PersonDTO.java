@@ -5,7 +5,7 @@ import java.io.Serializable;
 import lombok.Data;
 /**
  * CreditorDTO.java 
- * classe dto per i dati del creditore
+ * classe dto per i dati del creditore e debitores
  * 
  * @Change @history
  * @author      Inmatica SpA - ldemartinis
