@@ -1,0 +1,10 @@
+CREATE TABLE `d_lettura_transazioni` (
+  `idLetturaTransazione` int NOT NULL AUTO_INCREMENT,
+  `transaction_id` bigint NOT NULL,
+  `operation_id` bigint NOT NULL,
+  `accounting_date` date NOT NULL,
+  `value_date` date NOT NULL,
+  `currency` varchar(45) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  PRIMARY KEY (`idLetturaTransazione`)
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
