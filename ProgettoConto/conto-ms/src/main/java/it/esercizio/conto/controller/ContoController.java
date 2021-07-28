@@ -66,7 +66,7 @@ public class ContoController {
 				this.contoBancarioAssembler.assemblerLetturaSaldoDomain(this.contoBancarioService.letturaSaldo()));
 	}
 	
-	/**endpoint per lettura transazioin
+	/**endpoint per lettura transazioni
 	 * 
 	 * @param fromAccountingDate
 	 * @param toAccountingDate
